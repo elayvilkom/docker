@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             when {
                 // Only run this stage if files under 'src/' have changed
-                changeset "**/ELA/**"
+                changeset "/home/ec2-user/docker/ELA/**"
             }
             steps {
                 echo 'Building because src directory has changed'
