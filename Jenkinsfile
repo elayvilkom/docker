@@ -1,12 +1,32 @@
 pipeline {
-    agent any  // Run on any available Jenkins agent
+    agent any
 
     stages {
-        // Stage 1: Print Hello World
-        stage('Hello WorldS') {
+        stage('Checkout') {
             steps {
-                // Simple echo command to print "Hello, World!" to the console
-                echo 'Hello, World!'
+                // Checkout code from Git
+                git 'https://github.com/your-repo.git'
+            }
+        }
+        
+        stage('Build') {
+            when {
+                // Only run this stage if files under 'src/' have changed
+                changeset "**/ELA/**"
+            }
+            steps {
+                echo 'Building because src directory has changed'
+                // Add your build steps here
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                branch 'main' // Only run on the 'main' branch
+            }
+            steps {
+                echo 'Deploying as we are on the main branch'
+                // Add your deploy steps here
             }
         }
     }
