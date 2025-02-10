@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         // Stage 1: Print Hello World
-        stage('Hello World') {
+        stage('Hello WorldS') {
             steps {
                 // Simple echo command to print "Hello, World!" to the console
                 echo 'Hello, World!'
